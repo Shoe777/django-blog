@@ -17,6 +17,7 @@ class Migration(migrations.Migration):
                 ('name', models.CharField(max_length=128)),
                 ('description', models.TextField(blank=True)),
                 ('posts', models.ManyToManyField(blank=True, related_name='categories', to='blogging.Post')),
+                #('categories', models.ManyToManyField(blank=True, related_name='posts', to='blogging.Post')),
             ],
         ),
     ]
