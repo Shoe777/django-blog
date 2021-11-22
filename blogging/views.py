@@ -46,5 +46,6 @@ class BlogListView(ListView):
 #     return render(request, 'detail.html', context)
 
 class BlogDetailView(DetailView):
+    queryset = Post.objects.filter().exclude(published_date__exact=None)
     model = Post
     template_name = 'detail.html'
