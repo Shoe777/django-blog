@@ -52,7 +52,7 @@ class FrontEndTestCase(TestCase):
         for count in range(1, 11):
             title = "Post %d Title" % count
             if count < 6:
-                self.assertContains(resp, title, count=1)
+                self.assertContains(resp, title, count=2)
             else:
                 self.assertNotContains(resp, title)   
 
