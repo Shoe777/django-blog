@@ -8,7 +8,8 @@ from django.views.generic.detail import DetailView
 
 # Create your views here.
 
-#from django.http import HttpResponse, HttpResponseRedirect, Http404
+# from django.http import HttpResponse, HttpResponseRedirect, Http404
+
 
 def stub_view(request, *args, **kwargs):
     body = "Stub View\n\n"
@@ -18,7 +19,8 @@ def stub_view(request, *args, **kwargs):
     if kwargs:
         body += "Kwargs:\n"
         body += "\n".join(["\t%s: %s" % i for i in kwargs.items()])
-    return HttpResponse(body, content_type = "text/plain")
+    return HttpResponse(body, content_type="text/plain")
+
 
 # def list_view(request):
 #     published = Post.objects.exclude(published_date__exact=None)
@@ -29,11 +31,16 @@ def stub_view(request, *args, **kwargs):
 #     #return HttpResponse(body, content_type='text/html')
 #     return render(request, 'list.html', context)
 
+
 class BlogListView(ListView):
-    #queryset = Post.object.all()
-    queryset = Post.objects.filter().exclude(published_date__exact=None).order_by('-published_date')
+    # queryset = Post.object.all()
+    queryset = (
+        Post.objects.filter()
+        .exclude(published_date__exact=None)
+        .order_by("-published_date")
+    )
     model = Post
-    template_name = 'list.html'
+    template_name = "list.html"
 
 
 # def detail_view(request, post_id):
@@ -45,7 +52,8 @@ class BlogListView(ListView):
 #     context = {'post': post}
 #     return render(request, 'detail.html', context)
 
+
 class BlogDetailView(DetailView):
     queryset = Post.objects.filter().exclude(published_date__exact=None)
     model = Post
-    template_name = 'detail.html'
+    template_name = "detail.html"
