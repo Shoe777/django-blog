@@ -2,6 +2,7 @@ from django.db import models
 
 # Create your models here.
 
+
 class Poll(models.Model):
     title = models.CharField(max_length=128)
     text = models.TextField(blank=True)
@@ -10,7 +11,8 @@ class Poll(models.Model):
     def __str__(self):
         return self.title
 
-#class Category(models.Model):
+
+# class Category(models.Model):
 
 #    name = models.CharField(max_length=128)
 #    description = models.TextField(blank = True)
